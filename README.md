@@ -1,10 +1,39 @@
 # Choke Test Safety Check
 
-A native macOS application for analyzing 3D-printed objects against safety-standard choke test cylinders to identify potential choking hazards.
+Analyze 3D-printed objects against safety-standard choke test cylinders to identify potential choking hazards.
 
 ![Platform](https://img.shields.io/badge/platform-macOS-blue)
+![Swift](https://img.shields.io/badge/swift-5.9-orange)
 ![Python](https://img.shields.io/badge/python-3.9+-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
+
+## ⚡️ Two Versions Available
+
+### 🎯 Native Swift App (Recommended)
+**Location:** `ChokeTestApp/`
+- **Size:** 10-20 MB
+- **Performance:** Native, instant startup
+- **UI:** Clean SwiftUI with minimalist design
+- [→ Swift App README](ChokeTestApp/README.md)
+
+### 🐍 Python Version
+**Location:** Root directory
+- **Size:** 1.3 GB (bundled)
+- **Cross-platform:** Can run on Windows/Linux
+- **UI:** PySide6 (Qt)
+- [→ Python Build Guide](BUILD_MACOS.md)
+
+## Quick Comparison
+
+| Feature | Swift App | Python App |
+|---------|-----------|------------|
+| **App Size** | 10-20 MB | 1,300 MB |
+| **Startup Time** | <1 second | 3-5 seconds |
+| **Memory Usage** | 50-100 MB | 150-250 MB |
+| **Native Look** | ✅ SwiftUI | ⚠️ Qt wrapper |
+| **Performance** | ⚡️ Native | 🐢 Interpreted |
+| **Dependencies** | None | Python + libs |
+| **Recommended** | ✅ Yes | Legacy |
 
 ## Features
 

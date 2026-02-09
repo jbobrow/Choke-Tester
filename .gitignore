@@ -48,3 +48,19 @@ reports/*.csv
 # Temporary files
 *.tmp
 *.log
+
+# Swift/Xcode
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata
+*.xcworkspace/*
+!*.xcworkspace/contents.xcworkspacedata
+xcuserdata/
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+DerivedData/
+.build/
+*.xcarchive
