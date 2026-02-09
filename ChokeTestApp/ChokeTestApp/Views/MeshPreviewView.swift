@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SceneKit
+import AppKit
 
 struct MeshPreviewView: View {
     let result: ChokeTestResult

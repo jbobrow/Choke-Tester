@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import simd
+import AppKit
 
 struct ChokeTestResult: Identifiable, Equatable {
     let id = UUID()
