@@ -37,14 +37,10 @@ enum MeshLoader {
     private static func loadBinarySTL(data: Data, name: String) throws -> Mesh {
         guard data.count >= 84 else { throw MeshError.invalidSTL }
 
-        // Skip 80-byte header
-        var offset = 80
-
-        // Read triangle count
-        let triangleCount = data.withUnsafeBytes { bytes in
-            bytes.load(fromByteOffset: offset, as: UInt32.self)
+        // Read triangle count (at bytes 80-83)
+        let triangleCount: UInt32 = data.subdata(in: 80..<84).withUnsafeBytes { buffer in
+            buffer.loadUnaligned(as: UInt32.self)
         }
-        offset += 4
 
         guard data.count >= 84 + Int(triangleCount) * 50 else {
             throw MeshError.invalidSTL
@@ -54,20 +50,29 @@ enum MeshLoader {
         var triangles: [Mesh.Triangle] = []
         var vertexMap: [SIMD3<Float>: Int] = [:]
 
-        for _ in 0..<triangleCount {
-            // Skip normal (12 bytes)
-            offset += 12
+        // Each triangle is 50 bytes: normal(12) + vertex1(12) + vertex2(12) + vertex3(12) + attribute(2)
+        for i in 0..<Int(triangleCount) {
+            let baseOffset = 84 + i * 50
 
-            // Read 3 vertices
+            // Skip normal (first 12 bytes of triangle data)
+            let vertexOffset = baseOffset + 12
+
+            // Read 3 vertices (12 bytes each)
             var triangleIndices: [Int] = []
 
-            for _ in 0..<3 {
-                let x = data.withUnsafeBytes { $0.load(fromByteOffset: offset, as: Float.self) }
-                offset += 4
-                let y = data.withUnsafeBytes { $0.load(fromByteOffset: offset, as: Float.self) }
-                offset += 4
-                let z = data.withUnsafeBytes { $0.load(fromByteOffset: offset, as: Float.self) }
-                offset += 4
+            for v in 0..<3 {
+                let vOffset = vertexOffset + v * 12
+
+                // Read x, y, z as Float (4 bytes each)
+                let x = data.subdata(in: vOffset..<vOffset+4).withUnsafeBytes { buffer in
+                    buffer.loadUnaligned(as: Float.self)
+                }
+                let y = data.subdata(in: vOffset+4..<vOffset+8).withUnsafeBytes { buffer in
+                    buffer.loadUnaligned(as: Float.self)
+                }
+                let z = data.subdata(in: vOffset+8..<vOffset+12).withUnsafeBytes { buffer in
+                    buffer.loadUnaligned(as: Float.self)
+                }
 
                 let vertex = SIMD3<Float>(x, y, z)
 
@@ -80,9 +85,6 @@ enum MeshLoader {
                     triangleIndices.append(index)
                 }
             }
-
-            // Skip attribute byte count
-            offset += 2
 
             triangles.append(Mesh.Triangle(
                 v0: triangleIndices[0],
