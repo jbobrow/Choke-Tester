@@ -153,7 +153,11 @@ struct SceneKitView: NSViewRepresentable {
     }
 
     private func createMeshNode(from mesh: Mesh) -> SCNNode {
-        let vertices = mesh.vertices.map { SCNVector3($0.x, $0.y, $0.z) }
+        // Center the mesh at origin before creating geometry
+        let center = mesh.center
+        let vertices = mesh.vertices.map {
+            SCNVector3($0.x - center.x, $0.y - center.y, $0.z - center.z)
+        }
 
         var indices: [Int32] = []
         for triangle in mesh.triangles {
