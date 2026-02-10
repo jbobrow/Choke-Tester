@@ -81,11 +81,11 @@ class AppState: ObservableObject {
     }
 
     func processFiles(_ urls: [URL]) {
-        isProcessing = true
-        processingProgress = 0
-        results.removeAll()
+        Task { @MainActor in
+            isProcessing = true
+            processingProgress = 0
+            results.removeAll()
 
-        Task {
             let analyzer = ChokeTestAnalyzer(standard: standard)
 
             for (index, url) in urls.enumerated() {
@@ -93,18 +93,14 @@ class AppState: ObservableObject {
                     let mesh = try await MeshLoader.load(from: url)
                     let result = await analyzer.analyze(mesh: mesh, name: url.lastPathComponent)
 
-                    await MainActor.run {
-                        results.append(result)
-                        processingProgress = Double(index + 1) / Double(urls.count)
-                    }
+                    results.append(result)
+                    processingProgress = Double(index + 1) / Double(urls.count)
                 } catch {
                     print("Error processing \(url.lastPathComponent): \(error)")
                 }
             }
 
-            await MainActor.run {
-                isProcessing = false
-            }
+            isProcessing = false
         }
     }
 
