@@ -8,12 +8,12 @@
 import Foundation
 import simd
 
-struct Mesh {
+struct Mesh: Hashable {
     var vertices: [SIMD3<Float>]
     var triangles: [Triangle]
     var name: String
 
-    struct Triangle {
+    struct Triangle: Hashable {
         let v0: Int
         let v1: Int
         let v2: Int

@@ -9,7 +9,7 @@ import Foundation
 import simd
 import AppKit
 
-struct ChokeTestResult: Identifiable, Equatable {
+struct ChokeTestResult: Identifiable, Equatable, Hashable {
     let id = UUID()
     let name: String
     let fits: Bool
@@ -42,5 +42,9 @@ struct ChokeTestResult: Identifiable, Equatable {
 
     static func == (lhs: ChokeTestResult, rhs: ChokeTestResult) -> Bool {
         lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }

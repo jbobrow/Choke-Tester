@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ChokeStandard: Identifiable, Equatable {
+struct ChokeStandard: Identifiable, Equatable, Hashable {
     let id = UUID()
     let name: String
     let diameterMM: Double
