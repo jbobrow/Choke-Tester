@@ -40,6 +40,14 @@ struct ChokeTestApp: App {
                 Button("Batch Process Folder...") {
                     appState.batchProcess()
                 }
+
+                Divider()
+
+                Button("Clear Results") {
+                    appState.clearResults()
+                }
+                .keyboardShortcut("k", modifiers: .command)
+                .disabled(appState.results.isEmpty)
             }
 
             CommandGroup(replacing: .appSettings) {
@@ -78,7 +86,7 @@ class AppState: ObservableObject {
         Task { @MainActor in
             isProcessing = true
             processingProgress = 0
-            results.removeAll()
+            // Don't clear results - append new files to existing list
 
             let analyzer = ChokeTestAnalyzer(standard: standard)
 
@@ -125,6 +133,11 @@ class AppState: ObservableObject {
 
             self.processFiles(urls)
         }
+    }
+
+    func clearResults() {
+        results.removeAll()
+        selectedResult = nil
     }
 
     func showSettings() {

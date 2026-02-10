@@ -114,6 +114,7 @@ struct SceneKitView: NSViewRepresentable {
         meshNode.geometry?.firstMaterial?.shininess = 0.8
 
         // Apply best orientation if available (for hazards)
+        // This shows how the object fits inside the cylinder
         if let orientation = bestOrientation, isHazard {
             let transform = SCNMatrix4(orientation)
             meshNode.transform = transform
