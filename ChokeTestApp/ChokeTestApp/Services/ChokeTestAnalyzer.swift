@@ -43,9 +43,23 @@ actor ChokeTestAnalyzer {
             // Check if it fits
             let fits = diameterMM <= standard.diameterMM && heightMM <= standard.heightMM
 
-            if bestFit == nil || fits {
+            // Keep the best fit (smallest dimensions if it fits, or just track the smallest overall)
+            if bestFit == nil {
                 bestFit = (fits, diameterMM, heightMM, rotation)
-                if fits { break } // Found a hazardous orientation, stop
+            } else if fits {
+                // If it fits, prefer the orientation with smallest combined size (worst case)
+                let currentSize = bestFit!.diameter + bestFit!.height
+                let newSize = diameterMM + heightMM
+                if !bestFit!.fits || newSize < currentSize {
+                    bestFit = (fits, diameterMM, heightMM, rotation)
+                }
+            } else if !bestFit!.fits {
+                // Neither fits, keep the smaller one
+                let currentSize = bestFit!.diameter + bestFit!.height
+                let newSize = diameterMM + heightMM
+                if newSize < currentSize {
+                    bestFit = (fits, diameterMM, heightMM, rotation)
+                }
             }
         }
 

@@ -86,22 +86,26 @@ class AppState: ObservableObject {
         Task { @MainActor in
             isProcessing = true
             processingProgress = 0
-            // Don't clear results - append new files to existing list
 
+            // Process files and collect results
             let analyzer = ChokeTestAnalyzer(standard: standard)
+            var newResults: [ChokeTestResult] = []
 
             for (index, url) in urls.enumerated() {
                 do {
                     let mesh = try await MeshLoader.load(from: url)
                     let result = await analyzer.analyze(mesh: mesh, name: url.lastPathComponent)
+                    newResults.append(result)
 
-                    results.append(result)
+                    // Update progress
                     processingProgress = Double(index + 1) / Double(urls.count)
                 } catch {
                     print("Error processing \(url.lastPathComponent): \(error)")
                 }
             }
 
+            // Batch update results to minimize view updates
+            results.append(contentsOf: newResults)
             isProcessing = false
         }
     }

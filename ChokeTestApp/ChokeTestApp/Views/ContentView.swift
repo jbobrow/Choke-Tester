@@ -46,7 +46,9 @@ struct ContentView: View {
 
         group.notify(queue: .main) {
             if !urls.isEmpty {
-                appState.processFiles(urls)
+                Task { @MainActor in
+                    appState.processFiles(urls)
+                }
             }
         }
 
