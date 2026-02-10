@@ -177,7 +177,7 @@ enum PDFReportGenerator {
         let font = bold ? NSFont.boldSystemFont(ofSize: fontSize) : NSFont.systemFont(ofSize: fontSize)
         let attributes: [NSAttributedString.Key: Any] = [
             .font: font,
-            .foregroundColor: NSColor(cgColor: context.fillColor ?? .black)!
+            .foregroundColor: NSColor.black
         ]
 
         let attributedString = NSAttributedString(string: text, attributes: attributes)
