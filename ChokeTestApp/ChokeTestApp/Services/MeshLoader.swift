@@ -157,7 +157,7 @@ enum MeshLoader {
 
         // Unzip (using system unzip for simplicity)
         let process = Process()
-        process.executableURL = URL(fileURLPath: "/usr/bin/unzip")
+        process.executableURL = URL(fileURLWithPath: "/usr/bin/unzip")
         process.arguments = ["-q", url.path, "-d", tempDir.path]
         try process.run()
         process.waitUntilExit()
