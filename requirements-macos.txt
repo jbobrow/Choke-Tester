@@ -1,0 +1,13 @@
+# macOS-specific requirements for building native app
+#
+# Install with: pip install -r requirements-macos.txt
+#
+
+# Base requirements
+-r requirements.txt
+
+# macOS app building
+py2app>=0.28.0
+
+# Optional: for enhanced DMG creation
+# Install separately with: brew install create-dmg

@@ -1,1 +1,66 @@
+# macOS
 .DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# py2app
+*.dmg
+*.app
+macos_resources/*.iconset/
+macos_resources/icon_source.png
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Reports
+*.pdf
+*.csv
+reports/*.pdf
+reports/*.csv
+
+# Temporary files
+*.tmp
+*.log
+
+# Swift/Xcode
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata
+*.xcworkspace/*
+!*.xcworkspace/contents.xcworkspacedata
+xcuserdata/
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+DerivedData/
+.build/
+*.xcarchive
