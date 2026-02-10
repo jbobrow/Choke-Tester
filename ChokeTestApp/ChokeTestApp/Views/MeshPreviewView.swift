@@ -189,10 +189,10 @@ struct SceneKitView: NSViewRepresentable {
 extension SCNMatrix4 {
     init(_ m: simd_float3x3) {
         self.init(
-            m11: m[0][0], m12: m[0][1], m13: m[0][2], m14: 0,
-            m21: m[1][0], m22: m[1][1], m23: m[1][2], m24: 0,
-            m31: m[2][0], m32: m[2][1], m33: m[2][2], m34: 0,
-            m41: 0,       m42: 0,       m43: 0,       m44: 1
+            m11: CGFloat(m[0][0]), m12: CGFloat(m[0][1]), m13: CGFloat(m[0][2]), m14: 0,
+            m21: CGFloat(m[1][0]), m22: CGFloat(m[1][1]), m23: CGFloat(m[1][2]), m24: 0,
+            m31: CGFloat(m[2][0]), m32: CGFloat(m[2][1]), m33: CGFloat(m[2][2]), m34: 0,
+            m41: 0,                m42: 0,                m43: 0,                m44: 1
         )
     }
 }

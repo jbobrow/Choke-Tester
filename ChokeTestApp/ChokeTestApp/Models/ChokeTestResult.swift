@@ -9,7 +9,7 @@ import Foundation
 import simd
 import AppKit
 
-struct ChokeTestResult: Identifiable, Equatable, Hashable {
+struct ChokeTestResult: Identifiable, Equatable, Hashable, Sendable {
     let id = UUID()
     let name: String
     let fits: Bool
