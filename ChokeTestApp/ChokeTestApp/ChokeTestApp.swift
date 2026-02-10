@@ -37,12 +37,6 @@ struct ChokeTestApp: App {
             CommandGroup(after: .newItem) {
                 Divider()
 
-                Button("Export PDF Report...") {
-                    appState.exportPDF()
-                }
-                .keyboardShortcut("e", modifiers: .command)
-                .disabled(appState.results.isEmpty)
-
                 Button("Batch Process Folder...") {
                     appState.batchProcess()
                 }

@@ -132,6 +132,10 @@ struct SceneKitView: NSViewRepresentable {
         cylinderNode.geometry?.firstMaterial?.isDoubleSided = true
         scene.rootNode.addChildNode(cylinderNode)
 
+        // Add wireframe outline to cylinder for better visibility
+        let wireframeNode = createCylinderWireframe(standard: standard)
+        scene.rootNode.addChildNode(wireframeNode)
+
         // Position camera based on scene bounds
         let cameraDistance = max(maxDimension * 3, 80.0) // Ensure camera is far enough
         let cameraNode = SCNNode()
@@ -182,6 +186,64 @@ struct SceneKitView: NSViewRepresentable {
         node.eulerAngles = SCNVector3(0, 0, 0) // Already upright in SceneKit
 
         return node
+    }
+
+    private func createCylinderWireframe(standard: ChokeStandard) -> SCNNode {
+        let radius = Float(standard.diameterMM / 2.0)
+        let height = Float(standard.heightMM)
+        let segments = 32 // Number of segments around the circle
+
+        var vertices: [SCNVector3] = []
+        var indices: [Int32] = []
+
+        // Create top circle
+        for i in 0..<segments {
+            let angle = Float(i) * 2.0 * .pi / Float(segments)
+            let x = radius * cos(angle)
+            let z = radius * sin(angle)
+            vertices.append(SCNVector3(x, height / 2, z))
+        }
+
+        // Create bottom circle
+        for i in 0..<segments {
+            let angle = Float(i) * 2.0 * .pi / Float(segments)
+            let x = radius * cos(angle)
+            let z = radius * sin(angle)
+            vertices.append(SCNVector3(x, -height / 2, z))
+        }
+
+        // Top circle lines
+        for i in 0..<segments {
+            indices.append(Int32(i))
+            indices.append(Int32((i + 1) % segments))
+        }
+
+        // Bottom circle lines
+        for i in 0..<segments {
+            indices.append(Int32(segments + i))
+            indices.append(Int32(segments + (i + 1) % segments))
+        }
+
+        // Vertical lines connecting top and bottom (only draw 4 for cleaner look)
+        for i in stride(from: 0, to: segments, by: segments / 4) {
+            indices.append(Int32(i))
+            indices.append(Int32(segments + i))
+        }
+
+        let vertexSource = SCNGeometrySource(vertices: vertices)
+        let indexData = Data(bytes: indices, count: indices.count * MemoryLayout<Int32>.size)
+        let element = SCNGeometryElement(
+            data: indexData,
+            primitiveType: .line,
+            primitiveCount: indices.count / 2,
+            bytesPerIndex: MemoryLayout<Int32>.size
+        )
+
+        let geometry = SCNGeometry(sources: [vertexSource], elements: [element])
+        geometry.firstMaterial?.diffuse.contents = NSColor.darkGray
+        geometry.firstMaterial?.lightingModel = .constant // Always visible, not affected by lighting
+
+        return SCNNode(geometry: geometry)
     }
 }
 

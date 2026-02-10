@@ -22,9 +22,35 @@ struct ContentView: View {
                 ProcessingOverlay()
             }
         }
+        .onDrop(of: ["public.file-url"], isTargeted: nil) { providers in
+            handleDrop(providers)
+        }
         .sheet(isPresented: $appState.showingSettings) {
             SettingsView()
         }
+    }
+
+    private func handleDrop(_ providers: [NSItemProvider]) -> Bool {
+        var urls: [URL] = []
+        let group = DispatchGroup()
+
+        for provider in providers {
+            group.enter()
+            _ = provider.loadObject(ofClass: URL.self) { url, _ in
+                if let url = url {
+                    urls.append(url)
+                }
+                group.leave()
+            }
+        }
+
+        group.notify(queue: .main) {
+            if !urls.isEmpty {
+                appState.processFiles(urls)
+            }
+        }
+
+        return true
     }
 }
 
