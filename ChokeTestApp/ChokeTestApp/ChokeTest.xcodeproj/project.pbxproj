@@ -1,0 +1,407 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2B1B2DF52F3ACA3000A42A38 /* PDFReportGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1B2DEF2F3ACA3000A42A38 /* PDFReportGenerator.swift */; };
+		2B1B2DF62F3ACA3000A42A38 /* ChokeTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1B2DE82F3ACA3000A42A38 /* ChokeTestApp.swift */; };
+		2B1B2DF72F3ACA3000A42A38 /* Mesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1B2DEB2F3ACA3000A42A38 /* Mesh.swift */; };
+		2B1B2DF82F3ACA3000A42A38 /* MeshLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1B2DEE2F3ACA3000A42A38 /* MeshLoader.swift */; };
+		2B1B2DF92F3ACA3000A42A38 /* ChokeStandard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1B2DE92F3ACA3000A42A38 /* ChokeStandard.swift */; };
+		2B1B2DFA2F3ACA3000A42A38 /* ChokeTestAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1B2DED2F3ACA3000A42A38 /* ChokeTestAnalyzer.swift */; };
+		2B1B2DFB2F3ACA3000A42A38 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1B2DF32F3ACA3000A42A38 /* SettingsView.swift */; };
+		2B1B2DFC2F3ACA3000A42A38 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1B2DF12F3ACA3000A42A38 /* ContentView.swift */; };
+		2B1B2DFD2F3ACA3000A42A38 /* MeshPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1B2DF22F3ACA3000A42A38 /* MeshPreviewView.swift */; };
+		2B1B2DFE2F3ACA3000A42A38 /* ChokeTestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1B2DEA2F3ACA3000A42A38 /* ChokeTestResult.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2B1B2DD42F3AC99700A42A38 /* ChokeTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChokeTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B1B2DE82F3ACA3000A42A38 /* ChokeTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChokeTestApp.swift; sourceTree = "<group>"; };
+		2B1B2DE92F3ACA3000A42A38 /* ChokeStandard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChokeStandard.swift; sourceTree = "<group>"; };
+		2B1B2DEA2F3ACA3000A42A38 /* ChokeTestResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChokeTestResult.swift; sourceTree = "<group>"; };
+		2B1B2DEB2F3ACA3000A42A38 /* Mesh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mesh.swift; sourceTree = "<group>"; };
+		2B1B2DED2F3ACA3000A42A38 /* ChokeTestAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChokeTestAnalyzer.swift; sourceTree = "<group>"; };
+		2B1B2DEE2F3ACA3000A42A38 /* MeshLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshLoader.swift; sourceTree = "<group>"; };
+		2B1B2DEF2F3ACA3000A42A38 /* PDFReportGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFReportGenerator.swift; sourceTree = "<group>"; };
+		2B1B2DF12F3ACA3000A42A38 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		2B1B2DF22F3ACA3000A42A38 /* MeshPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeshPreviewView.swift; sourceTree = "<group>"; };
+		2B1B2DF32F3ACA3000A42A38 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		2B1B2DD62F3AC99700A42A38 /* ChokeTest */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ChokeTest;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2B1B2DD12F3AC99700A42A38 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2B1B2DCB2F3AC99700A42A38 = {
+			isa = PBXGroup;
+			children = (
+				2B1B2DE82F3ACA3000A42A38 /* ChokeTestApp.swift */,
+				2B1B2DEC2F3ACA3000A42A38 /* Models */,
+				2B1B2DF02F3ACA3000A42A38 /* Services */,
+				2B1B2DF42F3ACA3000A42A38 /* Views */,
+				2B1B2DD62F3AC99700A42A38 /* ChokeTest */,
+				2B1B2DD52F3AC99700A42A38 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2B1B2DD52F3AC99700A42A38 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2B1B2DD42F3AC99700A42A38 /* ChokeTest.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2B1B2DEC2F3ACA3000A42A38 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2B1B2DE92F3ACA3000A42A38 /* ChokeStandard.swift */,
+				2B1B2DEA2F3ACA3000A42A38 /* ChokeTestResult.swift */,
+				2B1B2DEB2F3ACA3000A42A38 /* Mesh.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		2B1B2DF02F3ACA3000A42A38 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2B1B2DED2F3ACA3000A42A38 /* ChokeTestAnalyzer.swift */,
+				2B1B2DEE2F3ACA3000A42A38 /* MeshLoader.swift */,
+				2B1B2DEF2F3ACA3000A42A38 /* PDFReportGenerator.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		2B1B2DF42F3ACA3000A42A38 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2B1B2DF12F3ACA3000A42A38 /* ContentView.swift */,
+				2B1B2DF22F3ACA3000A42A38 /* MeshPreviewView.swift */,
+				2B1B2DF32F3ACA3000A42A38 /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2B1B2DD32F3AC99700A42A38 /* ChokeTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2B1B2DDF2F3AC99800A42A38 /* Build configuration list for PBXNativeTarget "ChokeTest" */;
+			buildPhases = (
+				2B1B2DD02F3AC99700A42A38 /* Sources */,
+				2B1B2DD12F3AC99700A42A38 /* Frameworks */,
+				2B1B2DD22F3AC99700A42A38 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				2B1B2DD62F3AC99700A42A38 /* ChokeTest */,
+			);
+			name = ChokeTest;
+			packageProductDependencies = (
+			);
+			productName = ChokeTest;
+			productReference = 2B1B2DD42F3AC99700A42A38 /* ChokeTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2B1B2DCC2F3AC99700A42A38 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2620;
+				LastUpgradeCheck = 2620;
+				TargetAttributes = {
+					2B1B2DD32F3AC99700A42A38 = {
+						CreatedOnToolsVersion = 26.2;
+					};
+				};
+			};
+			buildConfigurationList = 2B1B2DCF2F3AC99700A42A38 /* Build configuration list for PBXProject "ChokeTest" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2B1B2DCB2F3AC99700A42A38;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 2B1B2DD52F3AC99700A42A38 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2B1B2DD32F3AC99700A42A38 /* ChokeTest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2B1B2DD22F3AC99700A42A38 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2B1B2DD02F3AC99700A42A38 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2B1B2DF52F3ACA3000A42A38 /* PDFReportGenerator.swift in Sources */,
+				2B1B2DF62F3ACA3000A42A38 /* ChokeTestApp.swift in Sources */,
+				2B1B2DF72F3ACA3000A42A38 /* Mesh.swift in Sources */,
+				2B1B2DF82F3ACA3000A42A38 /* MeshLoader.swift in Sources */,
+				2B1B2DF92F3ACA3000A42A38 /* ChokeStandard.swift in Sources */,
+				2B1B2DFA2F3ACA3000A42A38 /* ChokeTestAnalyzer.swift in Sources */,
+				2B1B2DFB2F3ACA3000A42A38 /* SettingsView.swift in Sources */,
+				2B1B2DFC2F3ACA3000A42A38 /* ContentView.swift in Sources */,
+				2B1B2DFD2F3ACA3000A42A38 /* MeshPreviewView.swift in Sources */,
+				2B1B2DFE2F3ACA3000A42A38 /* ChokeTestResult.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2B1B2DDD2F3AC99800A42A38 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 63KWA2RPU8;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		2B1B2DDE2F3AC99800A42A38 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 63KWA2RPU8;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		2B1B2DE02F3AC99800A42A38 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ChokeTest/ChokeTestApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 63KWA2RPU8;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ChokeTest/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jonbobrow.ChokeTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		2B1B2DE12F3AC99800A42A38 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ChokeTest/ChokeTestApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 63KWA2RPU8;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ChokeTest/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jonbobrow.ChokeTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2B1B2DCF2F3AC99700A42A38 /* Build configuration list for PBXProject "ChokeTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B1B2DDD2F3AC99800A42A38 /* Debug */,
+				2B1B2DDE2F3AC99800A42A38 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2B1B2DDF2F3AC99800A42A38 /* Build configuration list for PBXNativeTarget "ChokeTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B1B2DE02F3AC99800A42A38 /* Debug */,
+				2B1B2DE12F3AC99800A42A38 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2B1B2DCC2F3AC99700A42A38 /* Project object */;
+}

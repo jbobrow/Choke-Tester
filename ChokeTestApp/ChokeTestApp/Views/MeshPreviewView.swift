@@ -138,9 +138,9 @@ struct SceneKitView: NSViewRepresentable {
         cameraNode.camera = SCNCamera()
         cameraNode.camera?.zNear = 1.0
         cameraNode.camera?.zFar = Double(cameraDistance * 3)
-        cameraNode.position = SCNVector3(x: Float(cameraDistance) * 0.5,
-                                         y: Float(cameraDistance) * 0.3,
-                                         z: Float(cameraDistance))
+        cameraNode.position = SCNVector3(x: CGFloat(cameraDistance) * 0.5,
+                                         y: CGFloat(cameraDistance) * 0.3,
+                                         z: CGFloat(cameraDistance))
         cameraNode.look(at: SCNVector3(0, 0, 0))
         scene.rootNode.addChildNode(cameraNode)
 
