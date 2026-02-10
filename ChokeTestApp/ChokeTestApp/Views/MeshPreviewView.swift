@@ -39,8 +39,14 @@ struct MeshPreviewView: View {
             Divider()
 
             // 3D View
-            SceneKitView(mesh: result.mesh, showCylinder: result.fits)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            SceneKitView(
+                mesh: result.mesh,
+                showCylinder: result.fits,
+                isHazard: result.fits,
+                standard: result.standard,
+                bestOrientation: result.bestOrientation
+            )
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
     }
 }
@@ -72,6 +78,9 @@ struct StatusBadge: View {
 struct SceneKitView: NSViewRepresentable {
     let mesh: Mesh
     let showCylinder: Bool
+    let isHazard: Bool
+    let standard: ChokeStandard
+    let bestOrientation: simd_float3x3?
 
     func makeNSView(context: Context) -> SCNView {
         let scnView = SCNView()
@@ -90,24 +99,49 @@ struct SceneKitView: NSViewRepresentable {
     private func createScene() -> SCNScene {
         let scene = SCNScene()
 
-        // Add mesh
-        let meshNode = createMeshNode(from: mesh)
-        meshNode.geometry?.firstMaterial?.diffuse.contents = NSColor.systemBlue
-        meshNode.geometry?.firstMaterial?.specular.contents = NSColor.white
-        scene.rootNode.addChildNode(meshNode)
+        // Calculate mesh bounds for proper scaling
+        let bounds = mesh.bounds
+        let meshSize = bounds.size
+        let maxDimension = max(meshSize.x, max(meshSize.y, meshSize.z))
 
-        // Add choke cylinder if object is a hazard
-        if showCylinder {
-            let cylinderNode = createCylinderNode()
-            cylinderNode.geometry?.firstMaterial?.diffuse.contents = NSColor.systemRed.withAlphaComponent(0.2)
-            cylinderNode.geometry?.firstMaterial?.transparency = 0.3
-            scene.rootNode.addChildNode(cylinderNode)
+        // Add mesh (oriented and colored)
+        let meshNode = createMeshNode(from: mesh)
+
+        // Color based on hazard status
+        let meshColor = isHazard ? NSColor.systemRed : NSColor.systemGreen
+        meshNode.geometry?.firstMaterial?.diffuse.contents = meshColor
+        meshNode.geometry?.firstMaterial?.specular.contents = NSColor.white
+        meshNode.geometry?.firstMaterial?.shininess = 0.8
+
+        // Apply best orientation if available (for hazards)
+        if let orientation = bestOrientation, isHazard {
+            let transform = SCNMatrix4(orientation)
+            meshNode.transform = transform
         }
 
-        // Add camera
+        scene.rootNode.addChildNode(meshNode)
+
+        // Add choke cylinder for reference (semi-transparent)
+        let cylinderNode = createCylinderNode(standard: standard)
+        if showCylinder {
+            cylinderNode.geometry?.firstMaterial?.diffuse.contents = NSColor.systemRed.withAlphaComponent(0.15)
+        } else {
+            cylinderNode.geometry?.firstMaterial?.diffuse.contents = NSColor.systemBlue.withAlphaComponent(0.1)
+        }
+        cylinderNode.geometry?.firstMaterial?.transparency = 0.25
+        cylinderNode.geometry?.firstMaterial?.isDoubleSided = true
+        scene.rootNode.addChildNode(cylinderNode)
+
+        // Position camera based on scene bounds
+        let cameraDistance = max(maxDimension * 3, 80.0) // Ensure camera is far enough
         let cameraNode = SCNNode()
         cameraNode.camera = SCNCamera()
-        cameraNode.position = SCNVector3(x: 0, y: 0, z: 100)
+        cameraNode.camera?.zNear = 1.0
+        cameraNode.camera?.zFar = Double(cameraDistance * 3)
+        cameraNode.position = SCNVector3(x: Float(cameraDistance) * 0.5,
+                                         y: Float(cameraDistance) * 0.3,
+                                         z: Float(cameraDistance))
+        cameraNode.look(at: SCNVector3(0, 0, 0))
         scene.rootNode.addChildNode(cameraNode)
 
         return scene
@@ -136,9 +170,30 @@ struct SceneKitView: NSViewRepresentable {
         return SCNNode(geometry: geometry)
     }
 
-    private func createCylinderNode() -> SCNNode {
-        let cylinder = SCNCylinder(radius: 15, height: 30) // Approximate visualization
-        return SCNNode(geometry: cylinder)
+    private func createCylinderNode(standard: ChokeStandard) -> SCNNode {
+        // Use actual standard dimensions (convert mm to same scale as mesh)
+        let radius = CGFloat(standard.diameterMM / 2.0)
+        let height = CGFloat(standard.heightMM)
+
+        let cylinder = SCNCylinder(radius: radius, height: height)
+        let node = SCNNode(geometry: cylinder)
+
+        // Rotate cylinder to stand upright (default is lying down)
+        node.eulerAngles = SCNVector3(0, 0, 0) // Already upright in SceneKit
+
+        return node
+    }
+}
+
+// Helper to convert simd matrix to SCNMatrix4
+extension SCNMatrix4 {
+    init(_ m: simd_float3x3) {
+        self.init(
+            m11: m[0][0], m12: m[0][1], m13: m[0][2], m14: 0,
+            m21: m[1][0], m22: m[1][1], m23: m[1][2], m24: 0,
+            m31: m[2][0], m32: m[2][1], m33: m[2][2], m34: 0,
+            m41: 0,       m42: 0,       m43: 0,       m44: 1
+        )
     }
 }
 
